@@ -1,1 +1,1 @@
-# Gradient_Generator
+This gradient generator allows users to select two colors and a direction for the gradient using input fields. The generate button, when clicked, reads the values of the color inputs and direction select menu, constructs a CSS linear gradient string, and applies it to the preview div. The resulting CSS code for the gradient is also displayed in a textarea, allowing users to copy it easily for use in their own projects.
