@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Generator</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    body{
+        height: 100vh;
+        width: 100%;
+        background-image: linear-gradient( to right top ,#de8268,#f645f4)
+    }
+    .wapper{
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container{
+       display: flex;
+       gap: 50px;
+    }
+    .btn1{
+        background-color: rgb(223, 16, 120);
+         border: none;
+         font-size: 1rem;
+         width: 160px;
+         height: 50px;
+         margin-right: 5px;
+         border-radius: 40px;
+         color: white;
+         cursor: pointer;
+         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .btn2{
+        background-color: rgb(7, 3, 56);
+         border: none;
+         font-size: 1rem;
+         width: 160px;
+         height: 50px;
+         border-radius: 40px;
+         color: white;
+         cursor: pointer;
+         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+   .container1 p{
+   padding-top: 20px;
+     color: white;
+     text-decoration: underline;
+     font-weight: bold;
+     font-size: 21px;
+   }
+   .copyDiv{
+    height: 70px;
+    width: 350px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-left:3px solid white;
+    background-color: rgba(189, 189, 189, 0.4);
+    text-align: center;
+    color: white;
+    padding-top: 13px;
+    font-size: 20px;
+   }
+</style>
+<body>
+    <section>
+    <h1 style="margin-top: 5px; margin-left: 15px;">Gradient Generator</h1>
+    <div class="wapper">
+        <div class="container">
+    <button class="btn1">#de8268</button>
+    <button class="btn2">#f645f4</button>
+</div> 
+<div class="container1">
+    <p>copy your code :</p>
+</div>
+<div class="copyDiv">
+    background-image: linear-gradient( to right top ,#de8268,#f645f4);
+</div>
+</div>
+</section>
+<script>
+   let btn1=document.querySelector('.btn1');
+   let btn2=document.querySelector(".btn2");
+   let copyDiv=document.querySelector(".copyDiv");
+   let rgb1="#de8268";
+   let rgb2="#f645f4";
+   const hexaValue=()=>{
+    const myhexaValue="0123456789abcdef";
+    let color="#";
+    for(let i=0;i<6;i++){
+        color=color+myhexaValue[Math.floor(Math.random()*16)]
+    }
+    return color;
+   }
+  const handleChange=()=>{
+        rgb1=hexaValue();
+        btn1.innerText=rgb1;
+        document.body.style.background=`linear-gradient(to right top ,${rgb1},${rgb2})`;
+        copyDiv.innerText=`background-image:linear-gradient(to right top ,${rgb1},${rgb2})`;
+  }
+  const handle_Change=()=>{
+    rgb2=hexaValue();
+    btn2.innerText=rgb2;
+    document.body.style.background=`linear-gradient(to right top,${rgb1},${rgb2})`
+    copyDiv.innerText=`background-image:linear-gradient(to right top,${rgb1},${rgb2})`
+  }
+   btn1.addEventListener('click',handleChange)
+   btn2.addEventListener('click',handle_Change)
+   copyDiv.addEventListener('click',()=>{
+    window.navigator.clipboard.writeText(copyDiv.textContent)
+    alert("Text copied to a clipBoard")
+   })
+</script>
+</body>
+</html>
